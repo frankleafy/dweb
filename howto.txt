@@ -1,0 +1,60 @@
+create new github repository
+open terminal
+start:
+ vue ui
+ create new vue project
+ select base directory (project dir will be created)
+ don't initialize and npm as default
+ after the project has been created, add folder to new workspace
+ create vue.config.js
+ add:
+ module.exports = {
+    publicPath: process.env.NODE_ENV === 'production'
+        ? '/xxxxxprojectnamexxxxx/'
+        : '/'
+    }
+save..
+create deploy.sh
+add:
+#!/usr/bin/env sh
+
+# abort on errors
+set -e
+
+# build
+npm run build
+
+# navigate into the build output directory
+cd dist
+
+# if you are deploying to a custom domain
+# echo 'www.example.com' > CNAME
+
+git init
+git add -A
+git commit -m 'deploy'
+
+# if you are deploying to https://<USERNAME>.github.io
+ #git push -f git@github.com:frankleafy/dl58.github.io.git master
+
+# if you are deploying to https://<USERNAME>.github.io/<REPO>
+ git push -f git@github.com:frankleafy/xxxyourprojecnamexxx.git master:gh-pages
+
+cd -
+
+Change git name to your project name
+
+in Visual studio open new terminal and run:
+
+echo "# generic" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/frankleafy/temp.git
+git pull origin master --allow-unrelated-histories
+git push -u origin master
+
+commit everything via visual studio, name, vinkje, arrow up bottom
+
+commit to webspace
+sh deploy.sh
